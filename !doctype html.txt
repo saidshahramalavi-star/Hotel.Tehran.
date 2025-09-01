@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>هتل آپارتمان / واحد اجاره روزانه تهران</title>
+  <style>
+    body{font-family:sans-serif;margin:0;padding:0;background:#f9f9f9;color:#111}
+    header{background:#0ea5e9;color:#fff;padding:15px;text-align:center;font-size:20px;font-weight:bold}
+    section{padding:20px}
+    .card{background:#fff;padding:15px;margin-bottom:15px;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.1)}
+    img{width:100%;border-radius:8px;margin-bottom:10px}
+    a{color:#0ea5e9;text-decoration:none}
+    .price{color:#e11d48;font-weight:bold;font-size:18px}
+    .features{color:#111;font-size:16px;margin-bottom:10px}
+    .unit{margin-bottom:20px}
+  </style>
+</head>
+<body>
+  <header>🏨 هتل آپارتمان / واحد اجاره روزانه تهران</header>
+  <section>
+
+    <div class="card">
+      <h3>تمام واحدها</h3>
+
+      <div class="unit">
+        <h4>واحد تک‌خوابه</h4>
+        <img src="apartment1.jpg" alt="واحد تک‌خوابه">
+        <p>ظرفیت: 2 نفر</p>
+        <p class="price">قیمت: 2,500,000 تومان</p>
+        <p class="features">امکانات: پارکینگ، تلویزیون، آشپزخانه</p>
+      </div>
+
+      <div class="unit">
+        <h4>واحد دوخوابه معمولی</h4>
+        <img src="apartment2.jpg" alt="واحد دوخوابه معمولی">
+        <p>ظرفیت: 4 نفر</p>
+        <p class="price">قیمت: 3,000,000 تومان</p>
+        <p class="features">امکانات: پارکینگ، تلویزیون، آشپزخانه</p>
+      </div>
+
+      <div class="unit">
+        <h4>واحد دوخوابه جکوزی</h4>
+        <img src="apartment3.jpg" alt="واحد دوخوابه جکوزی">
+        <p>ظرفیت: 4 نفر</p>
+        <p class="price">قیمت: 4,500,000 تومان</p>
+        <p class="features">امکانات: پارکینگ، تلویزیون، آشپزخانه</p>
+      </div>
+
+      <div class="unit">
+        <h4>واحد سه‌خوابه</h4>
+        <img src="apartment4.jpg" alt="واحد سه‌خوابه">
+        <p>ظرفیت: 6 نفر</p>
+        <p class="price">قیمت: 4,000,000 تومان</p>
+        <p class="features">امکانات: پارکینگ، تلویزیون، آشپزخانه</p>
+      </div>
+
+      <hr>
+      <p>📞 تماس اصلی: <a href="tel:+989373960808">00989373960808</a></p>
+      <p>📞 تماس کمکی: <a href="tel:+989045903248">00989045903248</a></p>
+      <p>تلگرام: <a href="https://t.me/P_S_SH_A" target="_blank">@P_S_SH_A</a></p>
+      <p>لوکیشن: <a href="https://www.google.com/maps/place/تهران,+خیابان+سازمان+برنامه+جنوبی,+کوچه+۲۵+مرکزی" target="_blank">مشاهده روی نقشه</a></p>
+    </div>
+
+  </section>
+</body>
+</html>
