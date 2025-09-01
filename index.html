@@ -8,161 +8,191 @@
 <title>هتل آپارتمان تهران</title>
 <link href="https://fonts.googleapis.com/css2?family=Vazir&display=swap" rel="stylesheet">
 <style>
-  body { font-family: 'Vazir', sans-serif; margin:0; padding:0; background:#111; color:#fff; overflow-x:hidden;}
-  header { text-align:center; padding:60px 10px; background: url('images/header-bg.jpg') center/cover no-repeat; color:#fff; text-shadow:2px 2px 8px rgba(0,0,0,0.7);}
-  header h1 { margin:0; font-size:3em; }
-  header p { margin-top:10px; font-size:1.2em; }
-  .container { max-width: 1100px; margin:20px auto; padding:0 10px; opacity:0; transform: translateY(50px); transition: all 1s ease;}
-  
-  /* واحدها */
-  .units { display:grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap:25px; }
-  .unit { background: rgba(255,255,255,0.1); border-radius:15px; padding:20px; text-align:center; transition: transform 0.5s, box-shadow 0.5s; position:relative; overflow:hidden; }
-  .unit:hover { transform: translateY(-10px); box-shadow:0 15px 25px rgba(0,0,0,0.4);}
-  .unit img { width:100%; border-radius:10px; margin-bottom:10px; transition: transform 0.5s; }
-  .unit:hover img { transform: scale(1.05); }
-  .unit h2 { margin-top:0; color:#ffd700; }
-  .unit p { margin:5px 0; color:#fff; font-weight:bold; }
-  
-  /* اسلایدر */
-  .slider { position:relative; width:100%; overflow:hidden; border-radius:15px; margin-bottom:15px;}
-  .slides { display:flex; transition: transform 0.5s ease-in-out;}
-  .slides img { width:100%; flex-shrink:0; border-radius:15px;}
-  
-  /* بخش‌ها */
-  .features, .contact, .faq { background: rgba(0,0,0,0.5); padding:30px; margin:25px 0; border-radius:15px; text-align:center; background-blend-mode: multiply; opacity:0; transform: translateY(50px); transition: all 1s ease;}
-  .features { background: url('images/features-bg.jpg') center/cover no-repeat; }
-  .contact { background: url('images/contact-bg.jpg') center/cover no-repeat; }
-  .faq { background: url('images/faq-bg.jpg') center/cover no-repeat; }
-  
-  .features h2, .contact h2, .faq h2 { margin-top:0; color:#ffd700; text-shadow:1px 1px 5px #000; }
-  .contact p, .features p, .faq p { margin:10px 0; color:#fff; text-shadow:1px 1px 5px #000; }
-  a { color:#ffd700; text-decoration:none; font-weight:bold; transition: all 0.3s; }
-  a:hover { text-decoration:underline; transform: scale(1.1); }
-  
-  /* FAQ */
-  .faq-item { margin-bottom:15px; }
-  .faq-question { cursor:pointer; background: rgba(255,255,255,0.1); padding:10px; border-radius:10px; transition: background 0.3s; }
-  .faq-question:hover { background: rgba(255,255,255,0.2); }
-  .faq-answer { display:none; padding:10px; background: rgba(0,0,0,0.3); border-radius:8px; margin-top:5px; }
-  
-  @media (max-width:600px){ .units { grid-template-columns: 1fr; } }
+body { font-family: 'Vazir', sans-serif; margin:0; padding:0; background:#111; color:#fff; overflow-x:hidden;}
+header { text-align:center; padding:60px 10px; background: url('images/header-bg.jpg') center/cover no-repeat; color:#fff; text-shadow:2px 2px 8px rgba(0,0,0,0.7);}
+header h1 { margin:0; font-size:3em; }
+header p { margin-top:10px; font-size:1.2em; }
+
+/* نوار بالای پنل */
+.top-panel { text-align:center; padding:15px; background: rgba(0,0,0,0.6);}
+.top-panel button { margin:0 10px; padding:10px 20px; font-size:1em; cursor:pointer; border:none; border-radius:8px; background:#ffd700; color:#111; font-weight:bold; transition:0.3s;}
+.top-panel button:hover { background:#ffc107; }
+
+.container { max-width: 1100px; margin:20px auto; padding:0 10px; opacity:0; transform: translateY(50px); transition: all 1s ease; }
+
+/* واحدها */
+.units { display:grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap:25px; }
+.unit { background: rgba(0,0,0,0.5); border-radius:15px; padding:20px; text-align:center; transition: transform 0.5s, box-shadow 0.5s; position:relative; overflow:hidden; }
+.unit:hover { transform: translateY(-10px); box-shadow:0 15px 25px rgba(0,0,0,0.6);}
+.unit h2 { margin-top:0; color:#ffd700; }
+.unit p { margin:5px 0; color:#fff; font-weight:bold; }
+
+/* اسلایدر حرفه‌ای */
+.slider { position:relative; width:100%; overflow:hidden; border-radius:15px; margin-bottom:15px;}
+.slides { display:flex; transition: transform 0.8s ease-in-out; }
+.slides img { width:100%; flex-shrink:0; border-radius:15px; }
+.slider-buttons { position:absolute; top:50%; width:100%; display:flex; justify-content:space-between; transform:translateY(-50%);}
+.slider-buttons button { background: rgba(0,0,0,0.5); border:none; color:#fff; padding:10px; border-radius:50%; cursor:pointer; font-size:1.2em; transition: 0.3s; }
+.slider-buttons button:hover { background: rgba(0,0,0,0.8); }
+.dots { text-align:center; margin-top:10px; }
+.dot { display:inline-block; width:12px; height:12px; background:#bbb; border-radius:50%; margin:0 5px; cursor:pointer; transition:0.3s; }
+.dot.active { background:#ffd700; }
+
+/* بخش‌ها */
+.features, .contact, .faq { background: rgba(0,0,0,0.4); padding:30px; margin:25px 0; border-radius:15px; text-align:center; background-blend-mode: multiply; }
+.features { background: url('images/features-bg.jpg') center/cover no-repeat; }
+.contact { background: url('images/contact-bg.jpg') center/cover no-repeat; }
+.faq { background: url('images/faq-bg.jpg') center/cover no-repeat; }
+
+.features h2, .contact h2, .faq h2 { margin-top:0; color:#ffd700; text-shadow:1px 1px 5px #000; }
+.contact p, .features p, .faq p { margin:10px 0; color:#fff; text-shadow:1px 1px 5px #000; }
+a { color:#ffd700; text-decoration:none; font-weight:bold; transition: all 0.3s; }
+a:hover { text-decoration:underline; transform: scale(1.1); }
+
+/* FAQ */
+.faq-item { margin-bottom:15px; }
+.faq-question { cursor:pointer; background: rgba(255,255,255,0.1); padding:10px; border-radius:10px; transition: background 0.3s; }
+.faq-question:hover { background: rgba(255,255,255,0.2); }
+.faq-answer { display:none; padding:10px; background: rgba(0,0,0,0.3); border-radius:8px; margin-top:5px; }
+
+@media (max-width:600px){ .units { grid-template-columns: 1fr; } }
+
 </style>
 </head>
 <body>
 
 <header>
-  <h1>هتل آپارتمان تهران</h1>
-  <p>بهترین واحدهای اجاره روزانه در قلب تهران</p>
+<h1>هتل آپارتمان تهران</h1>
+<p>بهترین واحدهای اجاره روزانه در قلب تهران</p>
 </header>
 
+<div class="top-panel">
+<button id="customerBtn">پنل مشتری</button>
+<button id="adminBtn">پنل مدیر</button>
+</div>
+
+<!-- پنل مشتری -->
+<div id="customerPanel">
 <div class="container">
 
-  <!-- واحدها -->
-  <div class="units">
-    <div class="unit">
-      <h2>تک خواب</h2>
-      <div class="slider">
-        <div class="slides">
-          <img src="images/tek-khab1.jpg" alt="تک خواب 1">
-          <img src="images/tek-khab2.jpg" alt="تک خواب 2">
-          <img src="images/tek-khab3.jpg" alt="تک خواب 3">
-        </div>
-      </div>
-      <p>قیمت: ۲۵۰۰ تومان</p>
-      <p>ظرفیت: ۲ نفر</p>
-    </div>
-    <div class="unit">
-      <h2>۲ خواب معمولی</h2>
-      <div class="slider">
-        <div class="slides">
-          <img src="images/2khab-mamooli1.jpg" alt="۲ خواب معمولی 1">
-          <img src="images/2khab-mamooli2.jpg" alt="۲ خواب معمولی 2">
-        </div>
-      </div>
-      <p>قیمت: ۳۰۰۰ تومان</p>
-      <p>ظرفیت: ۴ نفر</p>
-    </div>
-    <div class="unit">
-      <h2>۲ خواب جکوزی</h2>
-      <div class="slider">
-        <div class="slides">
-          <img src="images/2khab-jacuzzi1.jpg" alt="۲ خواب جکوزی 1">
-          <img src="images/2khab-jacuzzi2.jpg" alt="۲ خواب جکوزی 2">
-        </div>
-      </div>
-      <p>قیمت: ۴۵۰۰ تومان</p>
-      <p>ظرفیت: ۴ نفر</p>
-    </div>
-    <div class="unit">
-      <h2>۳ خواب</h2>
-      <div class="slider">
-        <div class="slides">
-          <img src="images/3khab1.jpg" alt="۳ خواب 1">
-          <img src="images/3khab2.jpg" alt="۳ خواب 2">
-        </div>
-      </div>
-      <p>قیمت: ۴۰۰۰ تومان</p>
-      <p>ظرفیت: ۶ نفر</p>
-    </div>
-  </div>
+<!-- واحدها -->
+<div class="units">
+<div class="unit">
+<h2>تک خواب</h2>
+<div class="slider" data-index="0">
+<div class="slides">
+<img src="images/tek-khab1.jpg" alt="تک خواب 1">
+<img src="images/tek-khab2.jpg" alt="تک خواب 2">
+<img src="images/tek-khab3.jpg" alt="تک خواب 3">
+</div>
+<div class="slider-buttons">
+<button class="prev">&#10094;</button>
+<button class="next">&#10095;</button>
+</div>
+<div class="dots">
+<span class="dot active"></span>
+<span class="dot"></span>
+<span class="dot"></span>
+</div>
+</div>
+<p>قیمت: ۲۵۰۰ تومان</p>
+<p>ظرفیت: ۲ نفر</p>
+</div>
 
-  <!-- امکانات -->
-  <div class="features">
-    <h2>امکانات کلی</h2>
-    <p>دارای پارکینگ</p>
-  </div>
-
-  <!-- تماس -->
-  <div class="contact">
-    <h2>تماس و اطلاعات</h2>
-    <p>شماره تماس اصلی: <a href="tel:+989373960808">00989373960808</a></p>
-    <p>شماره تماس کمکی: <a href="tel:+989045903248">00989045903248</a></p>
-    <p>تلگرام: <a href="https://t.me/P_S_SH_A" target="_blank">@P_S_SH_A</a></p>
-    <p>لوکیشن: تهران، خیابان سازمان برنامه جنوبی، کوچه ۲۵ مرکزی</p>
-  </div>
-
-  <!-- FAQ -->
-  <div class="faq">
-    <h2>پرسش‌های متداول</h2>
-    <div class="faq-item">
-      <div class="faq-question">آیا پارکینگ رایگان است؟</div>
-      <div class="faq-answer"><p>بله، پارکینگ رایگان برای همه واحدها موجود است.</p></div>
-    </div>
-  </div>
+<!-- واحدهای دیگر مشابه، مثل ۲ خواب معمولی، ۲ خواب جکوزی، ۳ خواب -->
 
 </div>
 
+<!-- امکانات -->
+<div class="features">
+<h2>امکانات کلی</h2>
+<p>دارای پارکینگ</p>
+</div>
+
+<!-- تماس -->
+<div class="contact">
+<h2>تماس و اطلاعات</h2>
+<p>شماره تماس اصلی: <a href="tel:+989373960808">00989373960808</a></p>
+<p>شماره تماس کمکی: <a href="tel:+989045903248">00989045903248</a></p>
+<p>تلگرام: <a href="https://t.me/P_S_SH_A" target="_blank">@P_S_SH_A</a></p>
+<p>لوکیشن: تهران، خیابان سازمان برنامه جنوبی، کوچه ۲۵ مرکزی</p>
+</div>
+
+<!-- FAQ -->
+<div class="faq">
+<h2>پرسش‌های متداول</h2>
+<div class="faq-item">
+<div class="faq-question">آیا پارکینگ رایگان است؟</div>
+<div class="faq-answer"><p>بله، پارکینگ رایگان برای همه واحدها موجود است.</p></div>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- پنل مدیر -->
+<div id="adminPanel" style="display:none;">
+<div class="container">
+<h2>پنل مدیر</h2>
+<p>اینجا می‌توانید واحدها را اضافه، حذف یا ویرایش کنید</p>
+<form id="addUnitForm">
+<input type="text" placeholder="نام واحد" required>
+<input type="text" placeholder="قیمت" required>
+<input type="text" placeholder="ظرفیت" required>
+<input type="file" required>
+<button type="submit">افزودن واحد</button>
+</form>
+</div>
+</div>
+
 <script>
-  // FAQ toggle
-  const questions = document.querySelectorAll('.faq-question');
-  questions.forEach(q => {
-    q.addEventListener('click', () => {
-      const answer = q.nextElementSibling;
-      answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
-    });
-  });
+// تغییر بین پنل‌ها
+const customerBtn = document.getElementById('customerBtn');
+const adminBtn = document.getElementById('adminBtn');
+const customerPanel = document.getElementById('customerPanel');
+const adminPanel = document.getElementById('adminPanel');
+customerBtn.addEventListener('click', ()=>{
+customerPanel.style.display='block';
+adminPanel.style.display='none';
+});
+adminBtn.addEventListener('click', ()=>{
+customerPanel.style.display='none';
+adminPanel.style.display='block';
+});
 
-  // اسلایدر ساده
-  const sliders = document.querySelectorAll('.slider');
-  sliders.forEach(slider=>{
-    const slides = slider.querySelector('.slides');
-    let index=0;
-    const total = slides.children.length;
-    setInterval(()=>{
-      index = (index+1)%total;
-      slides.style.transform = `translateX(-${index*100}%)`;
-    },3000);
-  });
+// FAQ toggle
+const questions = document.querySelectorAll('.faq-question');
+questions.forEach(q => {
+q.addEventListener('click', () => {
+const answer = q.nextElementSibling;
+answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+});
+});
 
-  // Scroll animation
-  const container = document.querySelector('.container');
-  window.addEventListener('scroll', ()=>{
-    const top = container.getBoundingClientRect().top;
-    if(top < window.innerHeight){
-      container.style.opacity = 1;
-      container.style.transform = 'translateY(0)';
-    }
-  });
+// اسلایدر ساده برای هر واحد
+const sliders = document.querySelectorAll('.slider');
+sliders.forEach(slider=>{
+let index=0;
+const slides=slider.querySelector('.slides');
+const prev=slider.querySelector('.prev');
+const next=slider.querySelector('.next');
+const dots=slider.querySelectorAll('.dot');
+
+function updateSlider(){
+slides.style.transform = `translateX(-${index*100}%)`;
+dots.forEach((d,i)=>d.classList.toggle('active',i===index));
+}
+
+prev.addEventListener('click', ()=>{
+index=(index-1+slides.children.length)%slides.children.length;
+updateSlider();
+});
+next.addEventListener('click', ()=>{
+index=(index+1)%slides.children.length;
+updateSlider();
+});
+dots.forEach((d,i)=>d.addEventListener('click',()=>{index=i;updateSlider();}));
+});
 </script>
 
 </body>
