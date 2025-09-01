@@ -1,198 +1,395 @@
-<index.html
-  <!DOCTYPE html>
+ <index.html
+   <!DOCTYPE html>
 <html lang="fa">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<!-- Google site verification (همین که دادی) -->
 <meta name="google-site-verification" content="google91fd525361b98469" />
 <title>هتل آپارتمان تهران</title>
 <link href="https://fonts.googleapis.com/css2?family=Vazir&display=swap" rel="stylesheet">
 <style>
-body { font-family: 'Vazir', sans-serif; margin:0; padding:0; background:#111; color:#fff; overflow-x:hidden;}
-header { text-align:center; padding:60px 10px; background: url('images/header-bg.jpg') center/cover no-repeat; color:#fff; text-shadow:2px 2px 8px rgba(0,0,0,0.7);}
-header h1 { margin:0; font-size:3em; }
-header p { margin-top:10px; font-size:1.2em; }
+  :root{
+    --accent:#ffd700;
+    --card-bg: rgba(0,0,0,0.55);
+    --glass: rgba(255,255,255,0.03);
+    --radius:14px;
+    --max-width:1100px;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; font-family:'Vazir',sans-serif; background:#0b0b0f; color:#fff;
+    -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+  }
 
-/* نوار بالای پنل */
-.top-panel { text-align:center; padding:15px; background: rgba(0,0,0,0.6);}
-.top-panel button { margin:0 10px; padding:10px 20px; font-size:1em; cursor:pointer; border:none; border-radius:8px; background:#ffd700; color:#111; font-weight:bold; transition:0.3s;}
-.top-panel button:hover { background:#ffc107; }
+  /* HEADER */
+  header{
+    min-height:220px;
+    display:flex; align-items:center; justify-content:center; flex-direction:column;
+    text-align:center;
+    background: linear-gradient(180deg, rgba(10,10,20,0.45), rgba(0,0,0,0.45)), url('images/header-bg.jpg') center/cover no-repeat;
+    padding:48px 16px;
+  }
+  header h1{font-size:2.4rem; margin:0 0 8px; text-shadow:0 6px 20px rgba(0,0,0,0.6)}
+  header p{margin:0; opacity:0.95}
 
-.container { max-width: 1100px; margin:20px auto; padding:0 10px; transition: all 1s ease; }
+  /* TOP PANEL (switch customer/admin) */
+  .top-panel{ display:flex; gap:12px; justify-content:center; padding:12px 16px; background:rgba(0,0,0,0.45)}
+  .top-btn{
+    background:var(--accent); color:#111; border:none; padding:10px 16px; border-radius:10px;
+    font-weight:700; cursor:pointer; transition:transform .15s ease, box-shadow .15s;
+  }
+  .top-btn:hover{ transform:translateY(-3px); box-shadow:0 8px 20px rgba(0,0,0,0.4) }
 
-/* واحدها */
-.units { display:grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap:25px; }
-.unit { background: rgba(0,0,0,0.5); border-radius:15px; padding:20px; text-align:center; transition: transform 0.5s, box-shadow 0.5s; position:relative; overflow:hidden; }
-.unit:hover { transform: translateY(-10px); box-shadow:0 15px 25px rgba(0,0,0,0.6);}
-.unit h2 { margin-top:0; color:#ffd700; }
-.unit p { margin:5px 0; color:#fff; font-weight:bold; }
+  /* LAYOUT CONTAINER */
+  .wrap{ max-width:var(--max-width); margin:22px auto; padding:0 14px; }
 
-/* اسلایدر حرفه‌ای */
-.slider { position:relative; width:100%; overflow:hidden; border-radius:15px; margin-bottom:15px;}
-.slides { display:flex; transition: transform 0.8s ease-in-out; }
-.slides img { width:100%; flex-shrink:0; border-radius:15px; }
-.slider-buttons { position:absolute; top:50%; width:100%; display:flex; justify-content:space-between; transform:translateY(-50%);}
-.slider-buttons button { background: rgba(0,0,0,0.5); border:none; color:#fff; padding:10px; border-radius:50%; cursor:pointer; font-size:1.2em; transition: 0.3s; }
-.slider-buttons button:hover { background: rgba(0,0,0,0.8); }
-.dots { text-align:center; margin-top:10px; }
-.dot { display:inline-block; width:12px; height:12px; background:#bbb; border-radius:50%; margin:0 5px; cursor:pointer; transition:0.3s; }
-.dot.active { background:#ffd700; }
+  /* CUSTOMER PANEL BACKGROUND (nice city background) */
+  #customerPanel{
+    background: linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.25)), url('images/header-bg.jpg') center/cover fixed;
+    padding:18px; border-radius:12px;
+  }
 
-/* بخش‌ها */
-.features, .contact, .faq { background: rgba(0,0,0,0.4); padding:30px; margin:25px 0; border-radius:15px; text-align:center; background-blend-mode: multiply; }
-.features { background: url('images/features-bg.jpg') center/cover no-repeat; }
-.contact { background: url('images/contact-bg.jpg') center/cover no-repeat; }
-.faq { background: url('images/faq-bg.jpg') center/cover no-repeat; }
+  /* UNITS GRID */
+  .units{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px; margin-bottom:20px; }
+  .unit{
+    background:var(--card-bg); border-radius:var(--radius); padding:14px; overflow:hidden;
+    transition: transform .35s ease, box-shadow .35s ease;
+    position:relative;
+  }
+  .unit:hover{ transform:translateY(-8px); box-shadow:0 18px 40px rgba(0,0,0,0.6) }
+  .unit h3{ margin:6px 0 8px; color:var(--accent); font-size:1.15rem }
+  .meta{ color:#eee; font-weight:700 }
 
-.features h2, .contact h2, .faq h2 { margin-top:0; color:#ffd700; text-shadow:1px 1px 5px #000; }
-.contact p, .features p, .faq p { margin:10px 0; color:#fff; text-shadow:1px 1px 5px #000; }
-a { color:#ffd700; text-decoration:none; font-weight:bold; transition: all 0.3s; }
-a:hover { text-decoration:underline; transform: scale(1.1); }
+  /* SLIDER inside unit */
+  .slider{ position:relative; border-radius:10px; overflow:hidden; background:var(--glass); }
+  .slides{ display:flex; width:100%; transition:transform .7s cubic-bezier(.22,.9,.31,1); }
+  .slides img{ width:100%; display:block; object-fit:cover; height:180px; flex-shrink:0; }
 
-/* FAQ */
-.faq-item { margin-bottom:15px; }
-.faq-question { cursor:pointer; background: rgba(255,255,255,0.1); padding:10px; border-radius:10px; transition: background 0.3s; }
-.faq-question:hover { background: rgba(255,255,255,0.2); }
-.faq-answer { display:none; padding:10px; background: rgba(0,0,0,0.3); border-radius:8px; margin-top:5px; }
+  /* slider controls */
+  .slider-controls{ position:absolute; inset:0; display:flex; align-items:center; justify-content:space-between; pointer-events:none; }
+  .slider-controls button{ pointer-events:auto; background:rgba(0,0,0,0.45); border:none; color:#fff; width:38px; height:38px; border-radius:50%; margin:8px; cursor:pointer; font-size:18px; display:flex; align-items:center; justify-content:center; }
+  .dots{ text-align:center; padding:8px 0 0; display:flex; gap:8px; justify-content:center; }
+  .dot{ width:10px; height:10px; border-radius:50%; background:#777; display:inline-block; cursor:pointer; transition:all .2s }
+  .dot.active{ background:var(--accent); transform:scale(1.15) }
 
-@media (max-width:600px){ .units { grid-template-columns: 1fr; } }
+  /* FEATURES / CONTACT / FAQ */
+  .panel-card{ background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.45)); border-radius:12px; padding:20px; margin:18px 0; box-shadow:0 8px 24px rgba(0,0,0,0.45); }
+  .panel-card h3{ color:var(--accent); margin-top:0 }
+  .contact a{ color:var(--accent); text-decoration:none; font-weight:700 }
+  .contact p{ margin:8px 0 }
 
+  /* FAQ simple */
+  .faq-item{ margin-bottom:12px }
+  .faq-q{ background:rgba(255,255,255,0.04); padding:10px; border-radius:8px; cursor:pointer; }
+  .faq-a{ display:none; padding:10px; margin-top:8px; background:rgba(0,0,0,0.35); border-radius:8px; }
+
+  /* ADMIN PANEL (simple) */
+  #adminPanel{ display:none; padding:18px; }
+  .form-row{ display:flex; gap:10px; margin-bottom:10px; flex-wrap:wrap }
+  .form-row input[type="text"], .form-row input[type="file"]{ padding:8px; border-radius:8px; border:0; background:rgba(255,255,255,0.03); color:#fff; min-width:180px }
+  .btn-primary{ background:var(--accent); color:#111; border:0; padding:10px 14px; border-radius:10px; cursor:pointer; font-weight:700 }
+
+  /* RESPONSIVE */
+  @media (max-width:700px){
+    header h1{ font-size:1.5rem }
+    .slides img{ height:150px }
+  }
 </style>
 </head>
 <body>
 
 <header>
-<h1>هتل آپارتمان تهران</h1>
-<p>بهترین واحدهای اجاره روزانه در قلب تهران</p>
+  <h1>هتل آپارتمان تهران</h1>
+  <p>واحدهای اجاره روزانه — تهران</p>
 </header>
 
 <div class="top-panel">
-<button id="customerBtn">پنل مشتری</button>
-<button id="adminBtn">پنل مدیر</button>
+  <button class="top-btn" id="customerBtn">پنل مشتری</button>
+  <button class="top-btn" id="adminBtn">پنل مدیر</button>
 </div>
 
-<!-- پنل مشتری -->
-<div id="customerPanel" style="display:block;">
-<div class="container">
+<!-- CUSTOMER PANEL (پیش‌فرض باز) -->
+<section id="customerPanel" class="wrap">
+  <div class="wrap-inner" style="max-width:var(--max-width); margin:0 auto;">
 
-<!-- واحدها -->
-<div class="units">
-<div class="unit">
-<h2>تک خواب</h2>
-<div class="slider" data-index="0">
-<div class="slides">
-<img src="images/tek-khab1.jpg" alt="تک خواب 1">
-<img src="images/tek-khab2.jpg" alt="تک خواب 2">
-<img src="images/tek-khab3.jpg" alt="تک خواب 3">
-</div>
-<div class="slider-buttons">
-<button class="prev">&#10094;</button>
-<button class="next">&#10095;</button>
-</div>
-<div class="dots">
-<span class="dot active"></span>
-<span class="dot"></span>
-<span class="dot"></span>
-</div>
-</div>
-<p>قیمت: ۲۵۰۰ تومان</p>
-<p>ظرفیت: ۲ نفر</p>
-</div>
+    <!-- UNITS GRID -->
+    <div class="units">
+      <!-- UNIT 1 -->
+      <article class="unit" data-unit-id="u1">
+        <h3>تک خواب</h3>
 
-<!-- واحدهای دیگر مشابه، مثل ۲ خواب معمولی، ۲ خواب جکوزی، ۳ خواب -->
-<!-- کد مشابه واحدها را مطابق نسخه قبلی اضافه کنید -->
+        <div class="slider" data-slider-id="s-u1">
+          <div class="slides">
+            <img src="images/tek-khab1.jpg" alt="تک خواب 1">
+            <img src="images/tek-khab2.jpg" alt="تک خواب 2">
+            <img src="images/tek-khab3.jpg" alt="تک خواب 3">
+          </div>
 
-</div>
+          <div class="slider-controls">
+            <button class="prev" aria-label="قبلی">&#10094;</button>
+            <button class="next" aria-label="بعدی">&#10095;</button>
+          </div>
 
-<!-- امکانات -->
-<div class="features">
-<h2>امکانات کلی</h2>
-<p>دارای پارکینگ</p>
-</div>
+        </div>
 
-<!-- تماس -->
-<div class="contact">
-<h2>تماس و اطلاعات</h2>
-<p>شماره تماس اصلی: <a href="tel:+989373960808">00989373960808</a></p>
-<p>شماره تماس کمکی: <a href="tel:+989045903248">00989045903248</a></p>
-<p>تلگرام: <a href="https://t.me/P_S_SH_A" target="_blank">@P_S_SH_A</a></p>
-<p>لوکیشن: تهران، خیابان سازمان برنامه جنوبی، کوچه ۲۵ مرکزی</p>
-</div>
+        <div class="meta">
+          <div>قیمت: <strong>۲۵۰۰ تومان</strong></div>
+          <div>ظرفیت: <strong>۲ نفر</strong></div>
+        </div>
+      </article>
 
-<!-- FAQ -->
-<div class="faq">
-<h2>پرسش‌های متداول</h2>
-<div class="faq-item">
-<div class="faq-question">آیا پارکینگ رایگان است؟</div>
-<div class="faq-answer"><p>بله، پارکینگ رایگان برای همه واحدها موجود است.</p></div>
-</div>
-</div>
+      <!-- UNIT 2 -->
+      <article class="unit" data-unit-id="u2">
+        <h3>۲ خواب معمولی</h3>
 
-</div>
-</div>
+        <div class="slider" data-slider-id="s-u2">
+          <div class="slides">
+            <img src="images/2khab-mamooli1.jpg" alt="2 خواب 1">
+            <img src="images/2khab-mamooli2.jpg" alt="2 خواب 2">
+          </div>
+          <div class="slider-controls">
+            <button class="prev" aria-label="قبلی">&#10094;</button>
+            <button class="next" aria-label="بعدی">&#10095;</button>
+          </div>
+        </div>
 
-<!-- پنل مدیر -->
-<div id="adminPanel" style="display:none;">
-<div class="container">
-<h2>پنل مدیر</h2>
-<p>اینجا می‌توانید واحدها را اضافه، حذف یا ویرایش کنید</p>
-<form id="addUnitForm">
-<input type="text" placeholder="نام واحد" required>
-<input type="text" placeholder="قیمت" required>
-<input type="text" placeholder="ظرفیت" required>
-<input type="file" required>
-<button type="submit">افزودن واحد</button>
-</form>
-</div>
-</div>
+        <div class="meta">
+          <div>قیمت: <strong>۳۰۰۰ تومان</strong></div>
+          <div>ظرفیت: <strong>۴ نفر</strong></div>
+        </div>
+      </article>
+
+      <!-- UNIT 3 -->
+      <article class="unit" data-unit-id="u3">
+        <h3>۲ خواب جکوزی</h3>
+
+        <div class="slider" data-slider-id="s-u3">
+          <div class="slides">
+            <img src="images/2khab-jacuzzi1.jpg" alt="2 خواب جکوزی 1">
+            <img src="images/2khab-jacuzzi2.jpg" alt="2 خواب جکوزی 2">
+          </div>
+          <div class="slider-controls">
+            <button class="prev" aria-label="قبلی">&#10094;</button>
+            <button class="next" aria-label="بعدی">&#10095;</button>
+          </div>
+        </div>
+
+        <div class="meta">
+          <div>قیمت: <strong>۴۵۰۰ تومان</strong></div>
+          <div>ظرفیت: <strong>۴ نفر</strong></div>
+        </div>
+      </article>
+
+      <!-- UNIT 4 -->
+      <article class="unit" data-unit-id="u4">
+        <h3>۳ خواب</h3>
+
+        <div class="slider" data-slider-id="s-u4">
+          <div class="slides">
+            <img src="images/3khab1.jpg" alt="3 خواب 1">
+            <img src="images/3khab2.jpg" alt="3 خواب 2">
+          </div>
+          <div class="slider-controls">
+            <button class="prev" aria-label="قبلی">&#10094;</button>
+            <button class="next" aria-label="بعدی">&#10095;</button>
+          </div>
+        </div>
+
+        <div class="meta">
+          <div>قیمت: <strong>۴۰۰۰ تومان</strong></div>
+          <div>ظرفیت: <strong>۶ نفر</strong></div>
+        </div>
+      </article>
+    </div>
+    <!-- /units -->
+
+    <!-- features -->
+    <section class="panel-card features">
+      <h3>امکانات کلی</h3>
+      <p>دارای پارکینگ</p>
+    </section>
+
+    <!-- contact -->
+    <section class="panel-card contact">
+      <h3>تماس و اطلاعات</h3>
+      <p>شماره تماس اصلی: <a href="tel:+989373960808">00989373960808</a></p>
+      <p>شماره تماس کمکی: <a href="tel:+989045903248">00989045903248</a></p>
+      <p>تلگرام: <a href="https://t.me/P_S_SH_A" target="_blank">@P_S_SH_A</a></p>
+      <p>لوکیشن: تهران، خیابان سازمان برنامه جنوبی، کوچه ۲۵ مرکزی</p>
+    </section>
+
+    <!-- FAQ -->
+    <section class="panel-card faq">
+      <h3>پرسش‌های متداول</h3>
+      <div class="faq-item">
+        <div class="faq-q">آیا پارکینگ رایگان است؟</div>
+        <div class="faq-a"><p>بله، پارکینگ رایگان برای همه واحدها موجود است.</p></div>
+      </div>
+    </section>
+
+  </div>
+</section>
+<!-- /customerPanel -->
+
+<!-- ADMIN PANEL -->
+<section id="adminPanel" class="wrap" aria-hidden="true">
+  <div class="wrap-inner" style="max-width:var(--max-width); margin:0 auto;">
+    <div class="panel-card">
+      <h3>پنل مدیر (ورود)</h3>
+      <p>برای ورود به پنل مدیر رمز را وارد کن (رمز ساده محلی برای فعال/غیرفعال کردن پنل):</p>
+      <div class="form-row">
+        <input id="adminPass" type="text" placeholder="رمز مدیر">
+        <button id="adminLogin" class="btn-primary">ورود</button>
+        <button id="adminLogout" class="btn-primary" style="display:none;background:#444;color:#fff">خروج</button>
+      </div>
+      <div id="adminArea" style="display:none; margin-top:12px;">
+        <h3>مدیریت واحدها</h3>
+        <p>در این نسخه ساده، می‌توانی یک واحد جدید به صورت موقت در سمت کاربر اضافه کنی (فایل واقعی عکس‌ها باید بعدا آپلود شود).</p>
+        <form id="addUnitForm">
+          <div class="form-row">
+            <input id="u_name" type="text" placeholder="نام واحد (مثال: تک خواب)" required>
+            <input id="u_price" type="text" placeholder="قیمت (تومان)" required>
+            <input id="u_capacity" type="text" placeholder="ظرفیت (نفر)" required>
+          </div>
+          <div class="form-row">
+            <input id="u_images" type="text" placeholder="نام فایل‌های عکس با کاما (مثال: tek-khab1.jpg,tek-khab2.jpg)" required>
+            <button type="submit" class="btn-primary">افزودن واحد</button>
+          </div>
+        </form>
+        <p style="margin-top:10px;color:#ffd700">توجه: افزودن واحد در این نسخه فقط در حافظه صفحه (JS) ذخیره می‌شود و برای دائمی شدن باید فایل HTML را در مخزن آپدیت کنی.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /adminPanel -->
 
 <script>
-// تغییر بین پنل‌ها
-const customerBtn = document.getElementById('customerBtn');
-const adminBtn = document.getElementById('adminBtn');
-const customerPanel = document.getElementById('customerPanel');
-const adminPanel = document.getElementById('adminPanel');
-customerBtn.addEventListener('click', ()=>{
-customerPanel.style.display='block';
-adminPanel.style.display='none';
+/* ====== Helpers ====== */
+function $(sel, ctx=document) { return ctx.querySelector(sel) }
+function $all(sel, ctx=document){ return Array.from(ctx.querySelectorAll(sel)) }
+
+/* ====== Panel switching & admin simple auth ====== */
+const customerBtn = $('#customerBtn'), adminBtn = $('#adminBtn');
+const customerPanel = $('#customerPanel'), adminPanel = $('#adminPanel');
+const adminLoginBtn = $('#adminLogin'), adminLogoutBtn = $('#adminLogout'), adminPassInput = $('#adminPass');
+const adminArea = $('#adminArea');
+
+// default: show customer
+function showCustomer(){ customerPanel.style.display='block'; adminPanel.style.display='none'; adminPanel.setAttribute('aria-hidden','true') }
+function showAdmin(){ customerPanel.style.display='none'; adminPanel.style.display='block'; adminPanel.setAttribute('aria-hidden','false') }
+
+customerBtn.addEventListener('click', ()=>{ showCustomer(); window.scrollTo({top:0,behavior:'smooth'}) });
+adminBtn.addEventListener('click', ()=>{ showAdmin(); window.scrollTo({top:0,behavior:'smooth'}) });
+
+// simple client-side password (not secure) — تغییر رمز در اینجا امکان‌پذیر است
+const SIMPLE_ADMIN_PASS = 'admin123'; // اگر خواستی خودت عوض کن
+
+adminLoginBtn.addEventListener('click', (e)=>{
+  e.preventDefault();
+  const v = adminPassInput.value.trim();
+  if(v === SIMPLE_ADMIN_PASS){
+    adminArea.style.display='block';
+    adminLogoutBtn.style.display='inline-block';
+    adminLoginBtn.style.display='none';
+    adminPassInput.style.display='none';
+    alert('ورود موفق — اکنون در حالت مدیر هستید (محلی).');
+  } else {
+    alert('رمز اشتباه است.');
+  }
 });
-adminBtn.addEventListener('click', ()=>{
-customerPanel.style.display='none';
-adminPanel.style.display='block';
+adminLogoutBtn.addEventListener('click', ()=>{
+  adminArea.style.display='none';
+  adminLogoutBtn.style.display='none';
+  adminLoginBtn.style.display='inline-block';
+  adminPassInput.style.display='inline-block';
+  adminPassInput.value='';
+  showCustomer();
 });
 
-// FAQ toggle
-const questions = document.querySelectorAll('.faq-question');
-questions.forEach(q => {
-q.addEventListener('click', () => {
-const answer = q.nextElementSibling;
-answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
-});
-});
+/* ====== Sliders: generic per .slider ====== */
+function initSliders(){
+  $all('.slider').forEach(slider=>{
+    const slidesEl = $('.slides', slider);
+    const slides = slidesEl.children;
+    const prev = $('.prev', slider);
+    const next = $('.next', slider);
 
-// اسلایدر ساده برای هر واحد
-const sliders = document.querySelectorAll('.slider');
-sliders.forEach(slider=>{
-let index=0;
-const slides=slider.querySelector('.slides');
-const prev=slider.querySelector('.prev');
-const next=slider.querySelector('.next');
-const dots=slider.querySelectorAll('.dot');
+    // create dots dynamically
+    const dotsWrap = document.createElement('div');
+    dotsWrap.className = 'dots';
+    for(let i=0;i<slides.length;i++){
+      const d = document.createElement('span'); d.className='dot'+(i===0?' active':'');
+      d.addEventListener('click', ()=> go(i));
+      dotsWrap.appendChild(d);
+    }
+    slider.appendChild(dotsWrap);
 
-function updateSlider(){
-slides.style.transform = `translateX(-${index*100}%)`;
-dots.forEach((d,i)=>d.classList.toggle('active',i===index));
+    let index = 0;
+    let timer = null;
+    function update(){
+      slidesEl.style.transform = `translateX(-${index*100}%)`;
+      const dots = dotsWrap.children;
+      for(let i=0;i<dots.length;i++) dots[i].classList.toggle('active', i===index);
+    }
+    function go(i){
+      index = (i + slides.length) % slides.length;
+      update();
+      resetTimer();
+    }
+    function prevFn(){ go(index-1) }
+    function nextFn(){ go(index+1) }
+
+    prev && prev.addEventListener('click', prevFn);
+    next && next.addEventListener('click', nextFn);
+
+    function resetTimer(){
+      if(timer) clearInterval(timer);
+      timer = setInterval(()=> go(index+1), 3500);
+    }
+    update();
+    resetTimer();
+  });
 }
 
-prev.addEventListener('click', ()=>{
-index=(index-1+slides.children.length)%slides.children.length;
-updateSlider();
+/* ====== Admin: add unit on-the-fly (client-side only) ====== */
+$('#addUnitForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const name = $('#u_name').value.trim();
+  const price = $('#u_price').value.trim();
+  const cap = $('#u_capacity').value.trim();
+  const imgs = $('#u_images').value.trim().split(',').map(s=>s.trim()).filter(Boolean);
+  if(!name || !price || !cap || imgs.length===0){ alert('همه فیلدها را کامل کنید.'); return; }
+
+  // build unit element
+  const article = document.createElement('article'); article.className='unit';
+  article.innerHTML = `<h3>${name}</h3>
+    <div class="slider"><div class="slides">${imgs.map(img=>`<img src="images/${img}" alt="${name}">`).join('')}</div>
+    <div class="slider-controls"><button class="prev">&#10094;</button><button class="next">&#10095;</button></div></div>
+    <div class="meta"><div>قیمت: <strong>${price} تومان</strong></div><div>ظرفیت: <strong>${cap} نفر</strong></div></div>`;
+  // append to grid
+  document.querySelector('.units').appendChild(article);
+  // re-init sliders to include new one
+  initSliders();
+  // clear form
+  $('#u_name').value=''; $('#u_price').value=''; $('#u_capacity').value=''; $('#u_images').value='';
+  alert('واحد به صورت موقت اضافه شد. برای ذخیره دائمی فایل HTML را بروز کن.');
 });
-next.addEventListener('click', ()=>{
-index=(index+1)%slides.children.length;
-updateSlider();
+
+/* ====== FAQ toggle ====== */
+$all('.faq-q').forEach(q=>{
+  q.addEventListener('click', ()=>{
+    const a = q.nextElementSibling;
+    a.style.display = (a.style.display==='block')?'none':'block';
+  });
 });
-dots.forEach((d,i)=>d.addEventListener('click',()=>{index=i;updateSlider();}));
+
+/* ====== Page init ====== */
+document.addEventListener('DOMContentLoaded', function(){
+  // show customer by default
+  showCustomer();
+  // init sliders
+  initSliders();
 });
 </script>
 
