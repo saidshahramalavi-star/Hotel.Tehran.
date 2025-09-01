@@ -1,67 +1,78 @@
 index.html
-<html lang="fa" dir="rtl">
+<!DOCTYPE html>
+<html lang="fa">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>هتل آپارتمان / واحد اجاره روزانه تهران</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Site Verification -->
+  <meta name="google-site-verification" content="google91fd525361b98469" />
+  <title>هتل آپارتمان تهران</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazir&display=swap" rel="stylesheet">
   <style>
-    body{font-family:sans-serif;margin:0;padding:0;background:#f9f9f9;color:#111}
-    header{background:#0ea5e9;color:#fff;padding:15px;text-align:center;font-size:20px;font-weight:bold}
-    section{padding:20px}
-    .card{background:#fff;padding:15px;margin-bottom:15px;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.1)}
-    img{width:100%;border-radius:8px;margin-bottom:10px}
-    a{color:#0ea5e9;text-decoration:none}
-    .price{color:#e11d48;font-weight:bold;font-size:18px}
-    .features{color:#111;font-size:16px;margin-bottom:10px}
-    .unit{margin-bottom:20px}
+    body { font-family: 'Vazir', sans-serif; margin:0; padding:0; background: linear-gradient(135deg,#6a11cb,#2575fc); color:#fff; }
+    header { text-align:center; padding:40px 10px; background: rgba(0,0,0,0.4); box-shadow: 0 4px 6px rgba(0,0,0,0.3);}
+    header h1 { margin:0; font-size:2.5em; text-shadow: 2px 2px 8px rgba(0,0,0,0.5);}
+    header p { margin-top:10px; font-size:1.1em; }
+    .container { max-width: 1100px; margin:20px auto; padding:0 10px; }
+    .units { display:grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap:25px; }
+    .unit { background: rgba(255,255,255,0.1); border-radius:15px; padding:20px; text-align:center; transition: transform 0.4s, box-shadow 0.4s; }
+    .unit:hover { transform: translateY(-10px); box-shadow:0 15px 25px rgba(0,0,0,0.4);}
+    .unit h2 { margin-top:0; color:#ffd700; }
+    .unit p { margin:5px 0; color:#fff; font-weight:bold; }
+    .features, .contact { background: rgba(0,0,0,0.3); padding:25px; margin:25px 0; border-radius:15px; text-align:center; }
+    .features h2, .contact h2 { margin-top:0; color:#ffd700; }
+    .contact p, .features p { margin:10px 0; color:#fff; }
+    a { color:#ffd700; text-decoration:none; font-weight:bold; }
+    a:hover { text-decoration:underline; }
+    @media (max-width:600px){ .units { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
-  <header>🏨 هتل آپارتمان / واحد اجاره روزانه تهران</header>
-  <section>
 
-    <div class="card">
-      <h3>تمام واحدها</h3>
+<header>
+  <h1>هتل آپارتمان تهران</h1>
+  <p>بهترین واحدهای اجاره روزانه در قلب تهران</p>
+</header>
 
-      <div class="unit">
-        <h4>واحد تک‌خوابه</h4>
-        <img src="apartment1.jpg" alt="واحد تک‌خوابه">
-        <p>ظرفیت: 2 نفر</p>
-        <p class="price">قیمت: 2,500,000 تومان</p>
-        <p class="features">امکانات: پارکینگ، تلویزیون، آشپزخانه</p>
-      </div>
+<div class="container">
 
-      <div class="unit">
-        <h4>واحد دوخوابه معمولی</h4>
-        <img src="apartment2.jpg" alt="واحد دوخوابه معمولی">
-        <p>ظرفیت: 4 نفر</p>
-        <p class="price">قیمت: 3,000,000 تومان</p>
-        <p class="features">امکانات: پارکینگ، تلویزیون، آشپزخانه</p>
-      </div>
-
-      <div class="unit">
-        <h4>واحد دوخوابه جکوزی</h4>
-        <img src="apartment3.jpg" alt="واحد دوخوابه جکوزی">
-        <p>ظرفیت: 4 نفر</p>
-        <p class="price">قیمت: 4,500,000 تومان</p>
-        <p class="features">امکانات: پارکینگ، تلویزیون، آشپزخانه</p>
-      </div>
-
-      <div class="unit">
-        <h4>واحد سه‌خوابه</h4>
-        <img src="apartment4.jpg" alt="واحد سه‌خوابه">
-        <p>ظرفیت: 6 نفر</p>
-        <p class="price">قیمت: 4,000,000 تومان</p>
-        <p class="features">امکانات: پارکینگ، تلویزیون، آشپزخانه</p>
-      </div>
-
-      <hr>
-      <p>📞 تماس اصلی: <a href="tel:+989373960808">00989373960808</a></p>
-      <p>📞 تماس کمکی: <a href="tel:+989045903248">00989045903248</a></p>
-      <p>تلگرام: <a href="https://t.me/P_S_SH_A" target="_blank">@P_S_SH_A</a></p>
-      <p>لوکیشن: <a href="https://www.google.com/maps/place/تهران,+خیابان+سازمان+برنامه+جنوبی,+کوچه+۲۵+مرکزی" target="_blank">مشاهده روی نقشه</a></p>
+  <div class="units">
+    <div class="unit">
+      <h2>تک خواب</h2>
+      <p>قیمت: ۲۵۰۰ تومان</p>
+      <p>ظرفیت: ۲ نفر</p>
     </div>
+    <div class="unit">
+      <h2>۲ خواب معمولی</h2>
+      <p>قیمت: ۳۰۰۰ تومان</p>
+      <p>ظرفیت: ۴ نفر</p>
+    </div>
+    <div class="unit">
+      <h2>۲ خواب جکوزی</h2>
+      <p>قیمت: ۴۵۰۰ تومان</p>
+      <p>ظرفیت: ۴ نفر</p>
+    </div>
+    <div class="unit">
+      <h2>۳ خواب</h2>
+      <p>قیمت: ۴۰۰۰ تومان</p>
+      <p>ظرفیت: ۶ نفر</p>
+    </div>
+  </div>
 
-  </section>
+  <div class="features">
+    <h2>امکانات کلی</h2>
+    <p>دارای پارکینگ</p>
+  </div>
+
+  <div class="contact">
+    <h2>تماس و اطلاعات</h2>
+    <p>شماره تماس اصلی: <a href="tel:+989373960808">00989373960808</a></p>
+    <p>شماره تماس کمکی: <a href="tel:+989045903248">00989045903248</a></p>
+    <p>تلگرام: <a href="https://t.me/P_S_SH_A" target="_blank">@P_S_SH_A</a></p>
+    <p>لوکیشن: تهران، خیابان سازمان برنامه جنوبی، کوچه ۲۵ مرکزی</p>
+  </div>
+
+</div>
+
 </body>
 </html>
