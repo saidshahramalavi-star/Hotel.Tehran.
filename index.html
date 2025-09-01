@@ -1,10 +1,5 @@
- <index.html
-  
-  <?php
-session_start();
-$adminLoggedIn = isset($_SESSION['admin']) && $_SESSION['admin'] === true;
-?>
-<!DOCTYPE html>
+<index.html
+ <!DOCTYPE html>
 <html lang="fa">
 <head>
 <meta charset="UTF-8">
@@ -14,28 +9,28 @@ $adminLoggedIn = isset($_SESSION['admin']) && $_SESSION['admin'] === true;
 <link href="https://fonts.googleapis.com/css2?family=Vazir&display=swap" rel="stylesheet">
 <style>
 body { margin:0; font-family:'Vazir', sans-serif; color:#fff; }
-header { text-align:center; padding:40px; background:rgba(0,0,0,0.5); }
-header h1 { margin:0; font-size:2.5em; color:#ffd700; }
-header p { margin-top:10px; }
-.slider { position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; overflow:hidden; }
-.slide { position:absolute; width:100%; height:100%; background-size:cover; background-position:center; opacity:0; transition:opacity 1s ease-in-out; }
-.slide.active { opacity:1; }
-.container { max-width:1100px; margin:20px auto; padding:0 10px; }
-.units { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; }
-.unit { background:rgba(0,0,0,0.6); border-radius:15px; padding:15px; text-align:center; }
-.unit img { width:100%; border-radius:10px; margin-bottom:10px; }
-.features,.contact,.faq { background:rgba(0,0,0,0.6); padding:20px; margin:25px 0; border-radius:15px; text-align:center; }
-.features h2,.contact h2,.faq h2 { color:#ffd700; }
-.faq-item { margin-bottom:15px; text-align:right; }
-.faq-question { cursor:pointer; background:rgba(255,255,255,0.1); padding:10px; border-radius:10px; }
-.faq-answer { display:none; padding:10px; }
-a { color:#ffd700; text-decoration:none; }
-a:hover { text-decoration:underline; }
-/* پنل مدیریت */
-#adminPanel { display:<?= $adminLoggedIn ? 'block' : 'none' ?>; background:rgba(255,255,255,0.1); padding:20px; margin:25px 0; border-radius:15px; text-align:center; color:#fff; }
-input[type=password], input[type=submit] { padding:10px; margin:5px; border-radius:5px; border:none; }
-input[type=submit] { background:#ffd700; cursor:pointer; }
-input[type=submit]:hover { background:#ffcc00; }
+header { text-align:center; padding:40px; background:rgba(0,0,0,0.5);}
+header h1 { margin:0; font-size:2.5em; color:#ffd700;}
+header p { margin-top:10px;}
+.slider { position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; overflow:hidden;}
+.slide { position:absolute; width:100%; height:100%; background-size:cover; background-position:center; opacity:0; transition:opacity 1s ease-in-out;}
+.slide.active { opacity:1;}
+.container { max-width:1100px; margin:20px auto; padding:0 10px;}
+.units { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px;}
+.unit { background:rgba(0,0,0,0.6); border-radius:15px; padding:15px; text-align:center;}
+.unit img { width:100%; border-radius:10px; margin-bottom:10px;}
+.features,.contact,.faq { background:rgba(0,0,0,0.6); padding:20px; margin:25px 0; border-radius:15px; text-align:center;}
+.features h2,.contact h2,.faq h2 { color:#ffd700;}
+.faq-item { margin-bottom:15px; text-align:right;}
+.faq-question { cursor:pointer; background:rgba(255,255,255,0.1); padding:10px; border-radius:10px;}
+.faq-answer { display:none; padding:10px;}
+a { color:#ffd700; text-decoration:none;}
+a:hover { text-decoration:underline;}
+/* پنل مدیر */
+#adminPanel { display:none; background:rgba(255,255,255,0.1); padding:20px; margin:25px 0; border-radius:15px; text-align:center; color:#fff;}
+input[type=password], input[type=submit] { padding:10px; margin:5px; border-radius:5px; border:none;}
+input[type=submit] { background:#ffd700; cursor:pointer;}
+input[type=submit]:hover { background:#ffcc00;}
 </style>
 </head>
 <body>
@@ -58,41 +53,19 @@ input[type=submit]:hover { background:#ffcc00; }
 <div class="container">
 
   <!-- پنل ورود مدیر -->
-  <?php if(!$adminLoggedIn): ?>
   <div id="loginPanel">
     <h2>🔑 ورود به پنل مدیریت</h2>
-    <form method="post">
-      <input type="password" name="password" placeholder="رمز ورود" required>
-      <input type="submit" value="ورود">
-    </form>
-    <?php
-    if($_SERVER['REQUEST_METHOD']=='POST'){
-      if($_POST['password'] === '94773055'){
-        $_SESSION['admin']=true;
-        header("Location:index.php");
-        exit();
-      } else {
-        echo "<p style='color:red;'>❌ رمز اشتباه است!</p>";
-      }
-    }
-    ?>
+    <input type="password" id="adminPass" placeholder="رمز ورود">
+    <input type="submit" value="ورود" onclick="checkPassword()">
+    <p id="passMsg" style="color:red;"></p>
   </div>
-  <?php endif; ?>
 
   <!-- پنل مدیریت -->
   <div id="adminPanel">
     <h2>🎛 پنل مدیریت</h2>
     <p>رمز درست وارد شد ✅</p>
-    <a href="index.php?logout=1" style="color:#ffd700;">🚪 خروج</a>
+    <button onclick="logoutAdmin()">🚪 خروج</button>
   </div>
-
-  <?php
-  if(isset($_GET['logout'])){
-    session_destroy();
-    header("Location:index.php");
-    exit();
-  }
-  ?>
 
   <!-- واحدها -->
   <div class="units">
@@ -163,6 +136,24 @@ document.querySelectorAll('.faq-question').forEach(q=>{
     a.style.display=a.style.display==='block'?'none':'block';
   });
 });
+
+// پنل مدیر با JS
+function checkPassword(){
+  const pass=document.getElementById('adminPass').value;
+  if(pass==='94773055'){
+    document.getElementById('adminPanel').style.display='block';
+    document.getElementById('loginPanel').style.display='none';
+  } else {
+    document.getElementById('passMsg').innerText='❌ رمز اشتباه است!';
+  }
+}
+function logoutAdmin(){
+  document.getElementById('adminPanel').style.display='none';
+  document.getElementById('loginPanel').style.display='block';
+  document.getElementById('adminPass').value='';
+  document.getElementById('passMsg').innerText='';
+}
 </script>
+
 </body>
 </html>
